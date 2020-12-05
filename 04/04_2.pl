@@ -4,14 +4,14 @@ use strict;
 use warnings;
 
 # Rules
-#byr (Birth Year)	1920-2002
-#iyr (Issue Year)	2010-2020
-#eyr (Expiration Year)	2020-2030
-#hgt (Height)		150-193cm or 59-76in
-#hcl (Hair Color)	#[0-9a-f]{6}
-#ecl (Eye Color)	amb blu brn gry grn hzl oth
-#pid (Passport ID)	[0-9]{9}
-#cid (Country ID)	ignored
+# byr (Birth Year)	1920-2002
+# iyr (Issue Year)	2010-2020
+# eyr (Expiration Year)	2020-2030
+# hgt (Height)		150-193cm or 59-76in
+# hcl (Hair Color)	#[0-9a-f]{6}
+# ecl (Eye Color)	amb blu brn gry grn hzl oth
+# pid (Passport ID)	[0-9]{9}
+# cid (Country ID)	ignored
 
 my $val = 0;
 my $cnt = 0;
@@ -35,14 +35,14 @@ while ( <DATA> ) {
     my $v = 1;
     foreach ( @fld ) {
       unless ( exists $fld{$_} ) {
-        print STDERR "missing $_ on line $. (pp #$cnt)\n";
-        print STDERR "-" x 50, "\n" unless ( eof(DATA) );
+        #print STDERR "missing $_ on line $. (pp #$cnt)\n";
+        #print STDERR "-" x 50, "\n" unless ( eof(DATA) );
         $v = 0;
         last;
       }
       unless ( $fld{$_} =~ /$val{$_}/ ) {
-        print STDERR "invalid $_: $fld{$_} on line $. (pp #$cnt)\n";
-        print STDERR "-" x 50, "\n" unless ( eof(DATA) );
+        #print STDERR "invalid $_: $fld{$_} on line $. (pp #$cnt)\n";
+        #print STDERR "-" x 50, "\n" unless ( eof(DATA) );
         $v = 0;
         last;
       }

@@ -20,6 +20,7 @@ sub check_arr(@) {
   check_arr(@a) if ( scalar(@a) > 2 );
   foreach ( @a ) {
     if ( $a + $_ == 2020 ) {
+      print $a, " + ", $_, " = ", $a + $_, " (", scalar(@a), ")\n";
       print $a, " * ", $_, " = ", $a * $_, " (", scalar(@a), ")\n";
       last;
     }

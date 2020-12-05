@@ -22,7 +22,7 @@ foreach ( @arr ) {
   my $cnt = eval "\"$str \"=~ tr/$chr/$chr/";
   if ( defined($cnt) && $cnt >= $min && $cnt <= $max ) {
     $tot++;
-    #print "Valid password: $str ($min <= $cnt <= $max instances of $chr)\n";
+    #print STDERR "Valid password: $str ($min <= $cnt <= $max instances of $chr)\n";
   }
 }
-print "$tot passwords valid\n";
+print "$tot valid passwords found\n";

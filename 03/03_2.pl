@@ -18,15 +18,14 @@ foreach my $i ( 0 .. $#x ) {
   my ($m, $x, $y) = (0, 0, 0);
   my $s = ( substr($arr[$y], $x, 1) eq "#" ) ? 1 : 0;
 
-  do {
+  while ( ($y += $y[$i]) <= $#arr ) {
     $m++;
     $x += $x[$i];
     $x %= $d;
-    $y += $y[$i];
     $s++ if ( substr($arr[$y], $x, 1) eq "#" );
-  } while ( $y <= $#arr );
+  }
   $s[$i] = $s;
-  print "We hit $s trees in $m moves ($i)\n";
+  #print STDERR "We hit $s trees in $m moves ($i)\n";
 }
-print "Hits: ", join(", ", @s), "\n";
+#print STDERR "Hits: ", join(", ", @s), "\n";
 printf "The answer is: %d\n", eval join("*", @s);

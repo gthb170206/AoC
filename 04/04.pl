@@ -4,14 +4,14 @@ use strict;
 use warnings;
 
 # Rules
-#byr (Birth Year)
-#iyr (Issue Year)
-#eyr (Expiration Year)
-#hgt (Height)
-#hcl (Hair Color)
-#ecl (Eye Color)
-#pid (Passport ID)
-#cid (Country ID) - optional
+# byr (Birth Year)
+# iyr (Issue Year)
+# eyr (Expiration Year)
+# hgt (Height)
+# hcl (Hair Color)
+# ecl (Eye Color)
+# pid (Passport ID)
+# cid (Country ID) - optional
 
 my $val = 0;
 my $cnt = 0;
@@ -26,7 +26,7 @@ while ( <DATA> ) {
     my $v = 1;
     foreach ( @fld ) {
       unless ( exists $fld{$_} ) {
-        print STDERR "Missing $_ on line $.\n";
+        #print STDERR "Missing $_ on line $.\n";
         $v = 0;
         last;
       }

@@ -44,6 +44,6 @@ foreach ( @pass ) {
   }
   $i = $r[0] * 8 + $c[0];
   $m = $i if ( $i > $m );
-  print "$_: row $r[0], col $c[0], seat ID $i.\n";
+  #print STDERR "$_: row $r[0], col $c[0], seat ID $i.\n";
 }
 print "Max seat ID: $m\n";

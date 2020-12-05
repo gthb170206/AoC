@@ -21,6 +21,7 @@ sub check_arr(@) {
   while ( $b = shift(@a) ) {
     foreach ( @a ) {
       if ( $a + $b + $_ == 2020 ) {
+        print "$a + $b + $_ = ", $a + $b + $_, "\n";
         print "$a * $b * $_ = ", $a * $b * $_, "\n";
         last;
       }

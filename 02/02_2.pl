@@ -23,4 +23,4 @@ foreach ( @arr ) {
   my @arr = ( "", split(//, $str) );
   $tot++ if ( $arr[$min] eq $chr xor $arr[$max] eq $chr );
 }
-print "$tot passwords valid\n";
+print "$tot valid passwords found\n";
