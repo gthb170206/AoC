@@ -33,9 +33,10 @@ while ( <DATA> ) {
     }
     $val += $v;
     %fld = ();
-  }
-  while ( /([a-z]{3}):(\S+)/go ) {
-    $fld{$1} = $2;
+  } else {
+    while ( /([a-z]{3}):(\S+)/go ) {
+      $fld{$1} = $2;
+    }
   }
 }
 close DATA;
