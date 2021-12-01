@@ -1,3 +1,3 @@
-# My take on solving Advent of Code 2020
+# These are my solutions to Advent of Code
 
-I opted for perl since it's what I know best, but maybe I'll use something else later on.
+These may not be the most elegant solutions, but at least I'll give it a try.
