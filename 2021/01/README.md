@@ -1,4 +1,5 @@
-```--- Day 1: Sonar Sweep ---
+```
+--- Day 1: Sonar Sweep ---
 
 You're minding your own business on a ship at sea when the overboard alarm goes
 off! You rush to see if you can help. Apparently, one of the Elves tripped and
@@ -102,4 +103,5 @@ H: 792 (increased)
 In this example, there are 5 sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. How many sums are larger
-than the previous sum?```
+than the previous sum?
+```

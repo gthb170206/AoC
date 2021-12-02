@@ -1,4 +1,5 @@
-```--- Day 2: Dive! ---
+```
+--- Day 2: Dive! ---
 
 Now, you need to figure out how to pilot this thing.
 
@@ -71,4 +72,5 @@ of 15 and a depth of 60. (Multiplying these produces 900.)
 Using this new interpretation of the commands, calculate the horizontal
 position and depth you would have after following the planned course.
 What do you get if you multiply your final horizontal position by your final
-depth? ```
+depth?
+```
