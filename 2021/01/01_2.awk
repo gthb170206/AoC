@@ -1,18 +1,17 @@
 BEGIN {
-  p=-1;
-  c=0;     
+  p =- 1;
 }
 {
-  a[1] = a[2];
-  a[2] = a[3];
-  a[3] = $1
+  c = b;
+  b = a;
+  a = $1;
   if ( NR >= 3 ) {
-    s = a[1] + a[2] + a[3];
+    s = a + b + c;
     if ( p != -1 && s > p )
-      c++;
+      d++;
     p = s;
   }
 }
 END{
-  print "INC: "c;
+  print d;
 }
