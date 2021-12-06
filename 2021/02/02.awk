@@ -1,4 +1,4 @@
-/^forward/ { v += $2; }
-/^up/      { h -= $2; }
-/^down/    { h += $2; }
-END{ print h * v; }
+/^f/ { v += $2; }
+/^u/ { h -= $2; }
+/^d/ { h += $2; }
+END{ print h" * "v" = "h * v; }
