@@ -42,5 +42,5 @@ END {
         value[idx] += a[k] * 2 ** (l - k);
     }
   }
-  print "ans: " value[1] * value[2] " (" value[1] " * " value[2] ")";
+  print "Answer: " value[1] * value[2] " (" value[1] " * " value[2] ")";
 }
