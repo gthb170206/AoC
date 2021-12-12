@@ -53,20 +53,31 @@ function col_sums(arr, _a, _i, _key) {
   }
 }
 #
-# Perform binary and on the strings and return number of hits
-function bin_and(str1, str2, _bsum, _i) {
+# Perform binary and on the strings and return the result string
+function bin_and(str1, str2, _i, _rstr) {
   for ( _i = 1; _i <= length(str1); _i++ )
-    if ( substr(str1, _i, 1) == substr(str2, _i, 1) )
-      _bsum += substr(str1, _i, 1) * substr(str2, _i, 1);
-  return _bsum;
+    _rstr = _rstr substr(str1, _i, 1) * substr(str2, _i, 1);
+  return _rstr;
 }
 #
-# Perform binary xor on the strings and return number of hits
-function bin_xor(str1, str2, _bsum, _i) {
+# Perform binary or on the strings and return the result string
+function bin_or(str1, str2, _i, _rstr) {
   for ( _i = 1; _i <= length(str1); _i++ )
-    if ( substr(str1, _i, 1) == substr(str2, _i, 1) )
-      _bsum ++;
-  return _bsum;
+    if ( substr(str1, _i, 1) == 1 || 
+         substr(str2, _i, 1) == 1 )
+      _rstr = _rstr "1";
+    else
+      _rstr = _rstr "0";
+  return _rstr;
+}#
+# Perform binary xor on the strings and return the result string
+function bin_xor(str1, str2, _i, _rstr) {
+  for ( _i = 1; _i <= length(str1); _i++ )
+    if ( substr(str1, _i, 1) != substr(str2, _i, 1) )
+      _rstr = _rstr "1";
+    else
+      _rstr = _rstr "0";
+  return _rstr;
 }
 BEGIN{
   dig[2] = 1;
@@ -101,27 +112,25 @@ BEGIN{
     }
   }
 
-  # Find 2 (has 0 in the column that all other digits have 1 in)
+  # Find 2 (has an inactive element that is active in all other digits)
   delete colsums
   col_sums(binarr);
   for ( i = 1; i <= length(colsums); i++ ) {
     if ( colsums[i] == 9 ) {
-      for ( str in binarr ) {
+      for ( str in binarr )
         if ( substr(binarr[str], i, 1) == 0 ) {
           key[str] = 2;
           rkey[2] = str;
           break;
         }
-      }
       break;
     }
   }
 
-  # Find 5 (not in key, length 5 and 1 active element common with 1)
+  # Find 5 (length 5 and only 1 active element in common with 1)
   for ( str in binarr ) {
-    if ( str in key )
-      continue;
-    if ( length(str) == 5 && bin_and(binarr[str], binarr[rkey[1]]) == 1 ) {
+    if ( length(str) == 5 &&
+         sum_binstring(bin_and(binarr[str], binarr[rkey[1]])) == 1 ) {
       key[str] = 5;
       rkey[5] = str;
       break;
@@ -139,22 +148,22 @@ BEGIN{
     }
   }
 
-  # Find 6 (not in key, length 6 and 1 active elements common with 1)
+  # Find 6 (length 6 and only 1 active elements in common with 1)
   for ( str in binarr ) {
-    if ( str in key )
-      continue;
-    if ( length(str) == 6 && bin_and(binarr[str], binarr[rkey[1]]) == 1 ) {
+    if ( length(str) == 6 &&
+         sum_binstring(bin_and(binarr[str], binarr[rkey[1]])) == 1 ) {
       key[str] = 6;
       rkey[6] = str;
       break;
     }
   }
 
-  # Find 9 (not in key, length 6 and 6 elements common with 5)
+  # Find 9 (not in key, length 6 and 1 element not in common with 5)
   for ( str in binarr ) {
     if ( str in key )
       continue;
-    if ( length(str) == 6 && bin_xor(binarr[str], binarr[rkey[5]]) == 6 ) {
+    if ( length(str) == 6 &&
+         sum_binstring(bin_xor(binarr[str], binarr[rkey[5]])) == 1 ) {
       key[str] = 9;
       rkey[9] = str;
       break;
@@ -173,15 +182,19 @@ BEGIN{
   }
 
   if ( length(key) != 10 ) {
-    print "Error on line " NR > "/dev/stderr";
+    print "Missing entry in key table:"
+    for ( str in key )
+      printf("%-7s:\t%d\n", str, key[str]);
     exit;
   }
 
   # Process the elements after the pipe    
-  rnum = "";
+  row_output = "";
   for ( i = pipe_idx + 1; i <= NF; i++ )
-    rnum = rnum key[sort_string($i)];
-  sum += rnum;
+    row_output = row_output key[sort_string($i)];
+
+  # Add the row output to the sum
+  sum += row_output;
 }
 END{
   print "Answer: " sum;
