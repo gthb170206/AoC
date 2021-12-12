@@ -127,8 +127,10 @@ BEGIN{
     }
   }
 
-  # Find 5 (length 5 and only 1 active element in common with 1)
+  # Find 5 (not in key, length 5 and only 1 active element in common with 1)
   for ( str in binarr ) {
+    if ( str in key )
+      continue;
     if ( length(str) == 5 &&
          sum_binstring(bin_and(binarr[str], binarr[rkey[1]])) == 1 ) {
       key[str] = 5;
@@ -179,13 +181,6 @@ BEGIN{
       rkey[0] = str;
       break;
     }
-  }
-
-  if ( length(key) != 10 ) {
-    print "Missing entry in key table:"
-    for ( str in key )
-      printf("%-7s:\t%d\n", str, key[str]);
-    exit;
   }
 
   # Process the elements after the pipe    
