@@ -1,5 +1,5 @@
 {
-  if ( $0 ~ "," ) {
+  if ( /,/ ) {
     n = split($0, bnums, /,/);
   } else if ( NF == 0 ) {
     board++;
@@ -32,11 +32,12 @@ END {
       if ( bcurr in bwon && bwon[bcurr] >= 1 )
         continue;
 
+      # Increment the board sum
       bsum[bcurr] += bnums[idx];
+
       # Row
       rsum[br]++;
       if ( rsum[br] == r_max ) {
-        #print "Row bingo on board "bcurr" at number "bnums[idx];
         btype = "row";
         bwon[bcurr]++;
       }
@@ -44,17 +45,21 @@ END {
       # Col
       csum[bc]++;
       if ( csum[bc] == c_max ) {
-        #print "Col bingo on board "bcurr" at number "bnums[idx];
         btype = "col";
         bwon[bcurr]++;
       }
+
+      # Exit if all boards have been won
       if ( length(bwon) == board )
         break;
     }
+
+    # Exit if all boards have been won
     if ( length(bwon) == board )
       break;
   }
-  #print "===";
-  print "Last bingo ("btype") for board #"bcurr" at round "idx": "bnums[idx];
-  print "Answer: " (sums[a[1]] - bsum[a[1]]) * bnums[idx]" (("sums[a[1]]" - "bsum[a[1]]") * "bnums[idx]")";
+
+  print "Last bingo (" btype ") for board #" bcurr " at round "\
+    idx ": " bnums[idx];
+  print "Answer: " (sums[a[1]] - bsum[a[1]]) * bnums[idx];
 }
