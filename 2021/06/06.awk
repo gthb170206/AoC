@@ -13,5 +13,5 @@ END{
         fish[j]--;
     }
   }
-  print "Number of fish: "length(fish)" after "days" days";
+  print "Number of fish: " length(fish) " after " days " days";
 }

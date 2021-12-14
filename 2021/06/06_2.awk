@@ -16,5 +16,5 @@ END{
     data[8] = data[-1];
     delete data[-1];
   }
-  print "Number of fish: "sum" after "days" days";
+  print "Number of fish: " sum " after " days " days";
 }
