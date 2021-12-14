@@ -60,5 +60,5 @@ END {
     if ( board[i] >= 2)
       cnt++;
   }
-  print "answer: "cnt;
+  print "Answer: " cnt;
 }
