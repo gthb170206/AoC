@@ -60,5 +60,5 @@ END{
     }
   }
   idx = (length(answer) + 1) / 2;
-  print "Answer (" idx "/" length(answer) "): " answer[idx];
+  print "Answer " answer[idx];
 }
