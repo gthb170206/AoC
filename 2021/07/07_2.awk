@@ -27,5 +27,5 @@ END{
     else
       break;
   }
-  print "Answer: "min_fuel" at "j;
+  print "Answer: " min_fuel " at " j;
 }
