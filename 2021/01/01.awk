@@ -3,4 +3,6 @@
     c++;
   p = $1;
 }
-END{ print c; }
+END{
+  print "Answer: " c;
+}

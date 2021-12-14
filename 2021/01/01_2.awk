@@ -9,4 +9,6 @@
     p = s;
   }
 }
-END{ print d; }
+END{
+  print "Answer: " d;
+}
