@@ -17,7 +17,5 @@ END {
       en += 2 ** (n - i);
     }
   }
-  printf("epsilon: %5d (%s)\n", en, eb);
-  printf("gamma:   %5d (%s)\n", gn, gb);
-  printf("power:   %5d\n", gn * en);
+  print "Answer: " gn * en;
 }

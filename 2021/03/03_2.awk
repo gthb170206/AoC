@@ -9,8 +9,8 @@ END {
     m = "^";
 
     # Copy the lines array
-    for ( i in lines )
-      data[i] = lines[i];
+    for ( line in lines )
+      data[line] = lines[line];
 
     # Loop over the indices
     for ( j = 1; j <= n; j++ ) {
@@ -22,25 +22,26 @@ END {
         stat[substr(data[i], j, 1)]++;
 
       # Extend the pattern
-      if ( ( idx % 2 ) == 1 && stat[0] > stat[1] ||
-           ( idx % 2 ) == 0 && stat[0] <= stat[1] )
-        m = m"0";
+      if ( idx % 2 == 1 && stat[0] > stat[1] ||
+           idx % 2 == 0 && stat[0] <= stat[1] )
+        m = m "0";
       else
-        m = m"1";
+        m = m "1";
 
-      # Filter the list
-      for ( i in data )
-        if ( data[i] !~ m )
-          delete data[i];
+      # Filter the data
+      for ( line in data )
+        if ( data[line] !~ m )
+          delete data[line];
       if ( length(data) == 1 )
         break;
     }
 
-    for ( i in data ) {
-      l = split(data[i], a, //);
+    # Process the data
+    for ( line in data ) {
+      l = split(data[line], a, //);
       for ( k = 1; k <= l; k++ )
         value[idx] += a[k] * 2 ** (l - k);
     }
   }
-  print "Answer: " value[1] * value[2] " (" value[1] " * " value[2] ")";
+  print "Answer: " value[1] * value[2];
 }
