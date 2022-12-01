@@ -14,7 +14,6 @@ END{
   # Run for the number of rounds specified above
   for ( round = 1; round <= rounds; round++ ) {
     f = 0;
-    delete fl;
 
     # Increment all cells
     for ( yx in data )
@@ -52,5 +51,5 @@ END{
         data[yx] = 0;
       }
   }
-  print "Answer (after " rounds "rounds): " flashes;
+  print "Answer (after " rounds " rounds): " flashes;
 }

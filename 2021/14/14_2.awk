@@ -31,7 +31,7 @@ END {
     split(pair, a, //);
     stat[a[1]] += pairs[pair];
   }
-  
+
   # Add the final character from the template to the statistics
   stat[substr(tmpl, length(tmpl))]++;
 

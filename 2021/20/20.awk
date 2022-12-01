@@ -88,5 +88,5 @@ END{
   for ( yx in img )
     sum += img[yx];
 
-  print "Answer: " sum;
+  print "Answer: " sum " (after " t - 1 " enhancement rounds)";
 }

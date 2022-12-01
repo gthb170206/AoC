@@ -63,7 +63,7 @@ function bin_and(str1, str2, _i, _rstr) {
 # Perform binary or on the strings and return the result string
 function bin_or(str1, str2, _i, _rstr) {
   for ( _i = 1; _i <= length(str1); _i++ )
-    if ( substr(str1, _i, 1) == 1 || 
+    if ( substr(str1, _i, 1) == 1 ||
          substr(str2, _i, 1) == 1 )
       _rstr = _rstr "1";
     else
@@ -183,7 +183,7 @@ BEGIN{
     }
   }
 
-  # Process the elements after the pipe    
+  # Process the elements after the pipe
   row_output = "";
   for ( i = pipe_idx + 1; i <= NF; i++ )
     row_output = row_output key[sort_string($i)];

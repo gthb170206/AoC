@@ -1,12 +1,12 @@
 function is_lower(str, _lower) {
   _lower = "abcdefghijklmnopqrstuvwxyz";
-  
+
   return index(_lower, substr(str, 1, 1));
 }
 
 function is_upper(str, _upper) {
   _upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  
+
   index(_upper, substr(str, 1, 1));
 }
 
@@ -58,7 +58,7 @@ function find_path(path, _path, _str) {
     } else
       delete used[path];
   }
-  
+
   # Remove final part from path string
   sub(","path"$", "", pstr);
 }

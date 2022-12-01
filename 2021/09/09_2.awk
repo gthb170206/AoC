@@ -10,8 +10,8 @@ function get_basin(y, x) {
       continue;
     if ( t in taken )
       continue;
-    #if ( coords[t] == coords[y,x] + 1 && 
-    if ( coords[t] > coords[y,x] && 
+    #if ( coords[t] == coords[y,x] + 1 &&
+    if ( coords[t] > coords[y,x] &&
          coords[t] < 9 ) {
       taken[t]++;
       if ( coords[t] < 8 )

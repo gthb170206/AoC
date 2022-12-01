@@ -1,6 +1,6 @@
 {
   if ( NF == 1 ) {
-    split($N0, a, /,/);
+    split($0, a, /,/);
     x = a[1];
     y = a[2];
     if ( max_y == "" || y > max_y )
