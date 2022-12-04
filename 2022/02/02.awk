@@ -1,5 +1,4 @@
 BEGIN{
-  # Outcomes
   r["A","X"] = 4; # 3 + 1
   r["A","Y"] = 8; # 6 + 2
   r["A","Z"] = 3; # 0 + 3
@@ -9,11 +8,10 @@ BEGIN{
   r["C","X"] = 7; # 6 + 1
   r["C","Y"] = 2; # 0 + 2
   r["C","Z"] = 6; # 3 + 3
-  s = 0;
 }
 {
-  s += r[$1,$2];
+  ans += r[$1,$2];
 }
 END{
-  print "End result: "s;
+  print "Answer:", ans;
 }
