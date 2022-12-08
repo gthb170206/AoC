@@ -1,9 +1,9 @@
-function basename(dir, _d){
+function dirname(dir, _d){
   if ( dir == "/" )
     return dir;
   _d = dir;
   sub(/\/[^\/]+$/, "", _d);
-  if ( _d != "" )
+  if ( _d == "" )
     return "/";
   return _d;
 }
@@ -12,7 +12,7 @@ function basename(dir, _d){
     if ( $3 ~ /^\// )
       cwd = $3;
     else if ( $3 == ".." )
-      cwd = basename(cwd);
+      cwd = dirname(cwd);
     else
       if ( cwd ~ /\/$/ )
         cwd = cwd $3;
@@ -26,7 +26,7 @@ function basename(dir, _d){
     du[d] += s;
     if ( d != "/" )
       do {
-        d = basename(d);
+        d = dirname(d);
         du[d] += s;
       } while ( d != "/" );
   }
