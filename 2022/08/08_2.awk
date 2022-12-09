@@ -37,7 +37,6 @@ END{
           break;
 
       score[y,x] = u * d * l * r;
-      #print "score[" y "," x "] = " u "*" d "*" l "*" r " => " score[y,x];
     }
 
   ans=0;
