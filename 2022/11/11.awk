@@ -1,8 +1,7 @@
 {
-  if ( match($0, /^Monkey [0-9]+: /) >= 1 ) {
-    idx = sustr($0, RSTART + RLENGTH);
-    sub(/:/, "", idx);
-  } else if ( match($0, /^ +Starting items: /) >= 1 )
+  if ( match($0, /^Monkey [0-9]+: /) >= 1 )
+    idx = sustr($0, RSTART + RLENGTH, index($0, ":") - RSTART - RLENGTH);
+  else if ( match($0, /^ +Starting items: /) >= 1 )
     items[idx] = substr($0, RSTART + RLENGTH);
   else if ( match($0, /^ +Operation: new = /) >= 1 )
     operation[idx] = substr($0, RSTART + RLENGTH);
@@ -44,7 +43,7 @@ END{
         if ( items[r] == "" )
           items[r] = new;
         else
-          items[r] = items[r] "," new;
+          items[r] = items[r] ", " new;
       }
 
       # Empty list
