@@ -1,20 +1,16 @@
 {
-  if ( /^Monkey [0-9]:/ ) {
-    gsub(/[a-zA-Z: ]/, "");
-    idx = $0;
-  } else if ( /Starting items: / ) {
-    gsub(/[a-zA-Z: ]/, "");
-    items[idx] = $0;
-  } else if ( /Operation: / ) {
-    sub(/^ *Operation: new = /, "");
-    operation[idx] = $0;
-  } else if ( /Test: / ) {
+  if ( match($0, /^Monkey [0-9]+: /) >= 1 )
+    idx = sustr($0, RSTART + RLENGTH);
+  else if ( match($0, /^ +Starting items: /) >= 1 )
+    items[idx] = substr($0, RSTART + RLENGTH);
+  else if ( match($0, /^ +Operation: new = /) >= 1 )
+    operation[idx] = substr($0, RSTART + RLENGTH);
+  else if ( /^ +Test: / )
     test[idx] = $NF;
-  } else if ( /^ *If true: / ) {
+  else if ( /^ +If true: / )
     action[idx] = $NF;
-  } else if ( /^ *If false: / ) {
-    action[idx] = action[idx] ":" $NF;
-  }
+  else if ( /^ +If false: / )
+    action[idx] = action[idx] ":" $NF
 }
 END{
   for ( round = 1; round <= 20; round++ ) {
