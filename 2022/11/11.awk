@@ -1,7 +1,8 @@
 {
-  if ( match($0, /^Monkey [0-9]+: /) >= 1 )
+  if ( match($0, /^Monkey [0-9]+: /) >= 1 ) {
     idx = sustr($0, RSTART + RLENGTH);
-  else if ( match($0, /^ +Starting items: /) >= 1 )
+    sub(/:/, "", idx);
+  } else if ( match($0, /^ +Starting items: /) >= 1 )
     items[idx] = substr($0, RSTART + RLENGTH);
   else if ( match($0, /^ +Operation: new = /) >= 1 )
     operation[idx] = substr($0, RSTART + RLENGTH);
@@ -15,7 +16,7 @@
 END{
   for ( round = 1; round <= 20; round++ ) {
     for ( idx = 0; idx < length(items); idx++ ) {
-      n = split(items[idx], a, /,/);
+      n = split(items[idx], a, /, /);
       # Handle each item
       for ( i = 1; i <= n; i++ ) {
         inspected[idx]++;
