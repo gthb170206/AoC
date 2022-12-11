@@ -1,24 +1,20 @@
+BEGIN{
+  div = 1;
+}
 {
-  if ( /^Monkey [0-9]:/ ) {
-    gsub(/[a-zA-Z: ]/, "");
-    idx = $0;
-  } else if ( /Starting items: / ) {
-    gsub(/[a-zA-Z: ]/, "");
-    items[idx] = $0;
-  } else if ( /Operation: / ) {
-    sub(/^ *Operation: new = /, "");
-    operation[idx] = $0;
-  } else if ( /Test: / ) {
+  if ( match($0, /^Monkey /) >= 1 )
+    idx = substr($0, RSTART + RLENGTH, index($0, ":") - RSTART - RLENGTH);
+  else if ( match($0, /^ +Starting items: /) >= 1 )
+    items[idx] = substr($0, RSTART + RLENGTH);
+  else if ( match($0, /^ +Operation: new = /) >= 1 )
+    operation[idx] = substr($0, RSTART + RLENGTH);
+  else if ( /^ +Test: / ) {
     test[idx] = $NF;
-    if ( idx == 0 )
-      div = test[idx];
-    else
-      div *= test[idx];
-  } else if ( /^ *If true: / ) {
+    div *= test[idx];
+  } else if ( /^ +If true: / )
     action[idx] = $NF;
-  } else if ( /^ *If false: / ) {
-    action[idx] = action[idx] ":" $NF;
-  }
+  else if ( /^ +If false: / )
+    action[idx] = action[idx] ":" $NF
 }
 END{
   for ( round = 1; round <= 10000; round++ ) {
@@ -49,7 +45,7 @@ END{
         if ( items[r] == "" )
           items[r] = new % div;
         else
-          items[r] = items[r] "," new % div;
+          items[r] = items[r] ", " new % div;
       }
 
       # Empty list
