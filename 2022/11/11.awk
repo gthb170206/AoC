@@ -24,7 +24,6 @@ END{
         # Operation
         op = operation[idx];
         gsub(/old/, old, op);
-        #print "      Op:  " op;
         m = split(op, b, / /);
         if ( b[2] == "+" )
           new = b[1] + b[3];
@@ -50,6 +49,8 @@ END{
       items[idx] = "";
     }
   }
+
+  # Get the two most active monkeys
   for ( idx = 0; idx < length(inspected); idx++ ) {
     if ( inspected[idx] >= f ) {
       s = f;
