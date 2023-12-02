@@ -11,10 +11,8 @@ BEGIN{
   while ( match(str, /[0-9]+ (blue|green|red)/) ) {
     m = substr(str, RSTART, RLENGTH);
     n = split(m, a, / +/);
-    if ( cubes[a[2]] < a[1] ) {
-      print "Skip: "m;
+    if ( cubes[a[2]] < a[1] )
       next;
-    }
     str = substr(str, RSTART + RLENGTH);
   }
   sum += game;
