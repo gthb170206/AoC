@@ -63,7 +63,7 @@ Analyze the rotations in your attached document. **What's the actual password to
 
 Your puzzle answer was `1168`.
 
---- Part Two ---
+**--- Part Two ---**
 
 You're sure that's the right password, but the door won't open. You knock, but nobody answers. You build a snowman while you think.
 

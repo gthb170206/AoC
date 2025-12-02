@@ -42,7 +42,7 @@ Your puzzle answer was `38310256125`.
 
 **The first half of this puzzle is complete! It provides one gold star: \***
 
---- Part Two ---
+**--- Part Two ---**
 
 The clerk quickly discovers that there are still invalid IDs in the ranges in your list. Maybe the young Elf was doing other silly patterns as well?
 
