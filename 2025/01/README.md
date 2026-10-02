@@ -14,15 +14,15 @@ You arrive at the secret entrance to the North Pole base ready to start decorati
 
 "Due to new security protocols, the password is locked in the safe below. Please see the attached document for the new combination."
 
-The safe has a dial with only an arrow on it; around the dial are the numbers 0 through 99 in order. As you turn the dial, it makes a small click noise as it reaches each number.
+The safe has a dial with only an arrow on it; around the dial are the numbers `0` through `99` in order. As you turn the dial, it makes a small click noise as it reaches each number.
 
 The attached document (your puzzle input) contains a sequence of **rotations**, one per line, which tell you how to open the safe. A rotation starts with an L or R which indicates whether the rotation should be to the **left** (toward lower numbers) or to the **right** (toward higher numbers). Then, the rotation has a **distance** value which indicates how many clicks the dial should be rotated in that direction.
 
-So, if the dial were pointing at 11, a rotation of R8 would cause the dial to point at `19`. After that, a rotation of `L19` would cause it to point at `0`.
+So, if the dial were pointing at `11`, a rotation of `R8` would cause the dial to point at `19`. After that, a rotation of `L19` would cause it to point at `0`.
 
-Because the dial is a circle, turning the dial left from 0 one click makes it point at 99. Similarly, turning the dial right from 99 one click makes it point at 0.
+Because the dial is a circle, turning the dial left from `0` one click makes it point at `99`. Similarly, turning the dial right from `99` one click makes it point at `0`.
 
-So, if the dial were pointing at 5, a rotation of L10 would cause it to point at 95. After that, a rotation of R5 could cause it to point at 0.
+So, if the dial were pointing at `5`, a rotation of `L10` would cause it to point at `95`. After that, a rotation of `R5` could cause it to point at `0`.
 
 The dial starts by pointing at `50`.
 
@@ -78,12 +78,12 @@ Following the same rotations as in the above example, the dial points at zero a 
  - The dial starts by pointing at `50`.
  - The dial is rotated `L68` to point at `82`; during this rotation, it points at `0` **`once`**.
  - The dial is rotated `L30` to point at `52`.
- - The dial is rotated `R48` to point at `0`.
- - The dial is rotated `L5` to point at 95.
- - The dial is rotated `R60` to point at 55; during this rotation, it points at `0` **`once`**.
- - The dial is rotated `L55` to point at `0`.
+ - The dial is rotated `R48` to point at **`0`**.
+ - The dial is rotated `L5` to point at `95`.
+ - The dial is rotated `R60` to point at `55`; during this rotation, it points at `0` **`once`**.
+ - The dial is rotated `L55` to point at **`0`**.
  - The dial is rotated `L1` to point at `99`.
- - The dial is rotated `L99` to point at `0`.
+ - The dial is rotated `L99` to point at **`0`**.
  - The dial is rotated `R14` to point at `14`.
  - The dial is rotated `L82` to point at `32`; during this rotation, it points at `0` **`once`**.
 In this example, the dial points at `0` three times at the end of a rotation, plus three more times during a rotation. So, in this example, the new password would be **`6`**.
