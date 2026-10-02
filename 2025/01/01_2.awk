@@ -12,7 +12,8 @@ BEGIN{
     if ( ppos != 0 && pos == 0 )
       ds++;
     else if ( pos < 0 ) {
-      if ( ppos != 0 ) ds++;
+      if ( ppos != 0 )
+        ds++;
       pos += 100;
     }
   } else {
